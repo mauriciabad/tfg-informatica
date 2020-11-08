@@ -1,0 +1,37 @@
+\clearpage\newpage
+\subsubsection{Design patterns}
+\label{sec:patterns}
+
+Design patterns are typical solutions to common problems in software design. Each pattern is like a blueprint that you can customize to solve a particular design problem in your code.\cite{refactoring-guru}
+
+In this section, I'm going to explain and justify the design patterns that the software of this project uses. Identifying the design patterns leads to better code because they are proved to work. Coding a custom solution certain cases may be forgotten thous introducing bugs is more frequent.
+
+\subsubsection*{Singleton}
+
+Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.\cite{refactoring-guru-singleton}
+
+This pattern is used in the database connection object as recommended by the Cloud Firestore documentation\cite{firestore-doc-init}. The code doesn't enforce the use of a singleton, but the constructor is only called once. This approach is considered a better practice because singletons inherently cause code to be tightly coupled. This makes faking them out under test rather difficult in many cases. But not enforcing the "singletoness" of the class mitigates its issues.
+
+\subsubsection*{Proxy}
+
+Proxy is a structural design pattern that lets you provide a substitute or placeholder for another object. A proxy controls access to the original object, allowing you to perform something either before or after the request gets through to the original object.\cite{refactoring-guru-proxy}
+
+This pattern is used to interact with the database. There's a class that provides methods for uploading data. This is good for testing because the class can be mocked to not use the real database connections when testing certain code.
+
+\subsubsection*{Null object}
+
+Null object is a behavioral design pattern that avoids null references by providing a default object.
+
+This pattern is used in the login system, when the user is not logged in, the user information object contains a default name and picture. This name and picture are displayed in the user popup.
+
+\subsubsection*{Servant}
+
+Servant or Utility class is a structural design pattern that defines a class with common functionality for a group of classes. The helper classes generally have no objects hence they have all static methods that act upon different kinds of class objects.
+
+This pattern is used specially for mathematical functions like: \mintinline{js}{random(min, max)} or \mintinline{js}{round(number, decimalPlaces)}; and other kind of generic tasks like: \mintinline{js}{getRandomID()} or \mintinline{js}{isEmpty(object)}.
+
+\subsubsection*{Adapter}
+
+Adapter is a structural design pattern that allows objects with incompatible interfaces to collaborate.\cite{refactoring-guru-adapter}
+
+This pattern is seamlessly used when displaying information from JSON format into HTML format because the browser can only display HTML. For example, it is used when the user searches for a subject the response obtained is a JSON object that is transformed into HTML to be displayed.

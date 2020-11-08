@@ -1,0 +1,178 @@
+\clearpage\newpage
+\section{Automated tests}
+
+The project runs automatic unitary tests at every commit. The tests run in the front-end's domain layer with the Jest library.
+
+I created this test subject that has several evaluations, each one with particularities, to run tests on them using different combinations of grades.
+
+\begin{minted}[
+    baselinestretch=0.65,
+]{typescript}
+{
+  shortName: "TEST",
+  fullName: "Testing subject",
+  course: "Q2 2019-2020",
+  uni: "UPC",
+  faculty: "FIB",
+  color: 1,
+  evaluations: [
+    {
+      name: "E1 All same weights",
+      exams: [
+        { name: "A1", weight: 0.25, type: "A" },
+        { name: "A2", weight: 0.25, type: "A" },
+        { name: "A3", weight: 0.25, type: "A" },
+        { name: "A4", weight: 0.25, type: "A" }
+      ]
+    }, {
+      name: "E2 All different weights",
+      exams: [
+        { name: "B1", weight: 0.2, type: "B" },
+        { name: "B2", weight: 0.3, type: "B" },
+        { name: "B3", weight: 0.5, type: "B" },
+      ]
+    }, {
+      name: "E3 Some same and different weights",
+      exams: [
+        { name: "C1", weight: 0.1, type: "C" },
+        { name: "C2", weight: 0.1, type: "C" },
+        { name: "C3", weight: 0.8, type: "C" }
+      ]
+    }, {
+      name: "E4 Repeated exam names",
+      exams: [
+        { name: "C1", weight: 0.5, type: "C" },
+        { name: "C2", weight: 0.5, type: "C" }
+      ]
+    }, {
+      name: "E5 Weight's sum greater than 1",
+      exams: [
+        { name: "D1", weight: 1, type: "D" },
+        { name: "D2", weight: 1, type: "D" }
+      ]
+    }
+  ],
+  creationDate: "April 1, 2020 at 7:12:44 PM UTC+1",
+  creator: "Maurici Abad Gutierrez",
+  creatorId: "4wUPZqVqt1Y9K6CAWLBNlZwe3b12"
+}
+\end{minted}
+
+\clearpage\newpage\noindent
+Below are the unitary tests (UT) grouped by what they test.
+
+\nextAutoTest{The order doesn't matter}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Sets all the grades to 10 in all possible orders. 
+    \item \textbf{Result}: \texttt{necessary}=0 and \texttt{final}=$(10*\text{sum of weights})$
+    \item \textbf{Variations}: All evaluations $\times$ All exam orders.
+\end{itemize}
+\vfill
+\nextAutoTest{Empty grades}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Leave all exams undone.
+    \item \textbf{Result}: \texttt{necessary}=$\frac{5}{\text{sum of weights}}$ and \texttt{final}=0
+    \item \textbf{Variations}: All evaluations
+\end{itemize}
+\vfill
+\nextAutoTest{Normal grades, not all filled}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Fill the evaluations with some grades from 0 to 10 with decimals, but leaving at least one empty exam. 
+    \item \textbf{Result}: \texttt{necessary} and \texttt{final} depend on the combination.
+    \item \textbf{Variations}: All evaluations $\times$ 5 grades combinations
+\end{itemize}
+\vfill
+\nextAutoTest{Normal grades, all filled}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Fill the evaluations with some grades from 0 to 10 with decimals, but filling all the exams. 
+    \item \textbf{Result}: \texttt{necessary} and \texttt{final} depend on the combination.
+    \item \textbf{Variations}: All evaluations $\times$ 5 grades combinations
+\end{itemize}
+\vfill
+\nextAutoTest{Necessary is never negative}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Set some grades that make \texttt{final} $\geq$ 5\\
+        In E4, set C1 to 10 \\
+        In E5, set D1 to 10 \\
+        In E2, set B2 and B3 to 10
+    \item \textbf{Result}: \\
+        \texttt{necessary}=0 and \texttt{final}=5 \\
+        \texttt{necessary}=0 and \texttt{final}=10 \\
+        \texttt{necessary}=0 and \texttt{final}=7
+    \item \textbf{Variations}: 3 cases.
+\end{itemize}
+\vfill
+\nextAutoTest{Necessary can be greater than 10}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Set some grades that make \texttt{necessary} $\geq$ 10\\
+        In E1, set A1, A2 and A3 to 0 \\
+        In E2, set B2 and B3 to 0 \\
+        In E3, set C2 and C3 to 0 \\
+        In E3, set C2 and C3 to 4.33 
+    \item \textbf{Result}: \\
+        \texttt{necessary}=20 and \texttt{final}=0 \\
+        \texttt{necessary}=25 and \texttt{final}=0 \\
+        \texttt{necessary}=100 and \texttt{final}=0 \\
+        \texttt{necessary}=11 and \texttt{final}=0
+    \item \textbf{Variations}: 4 cases.
+\end{itemize}
+\vfill
+\nextAutoTest{Negative grades}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Set some exams to -10. \\
+        In E1, set A1 to -10 \\
+        In E1, set A1 and A2 to -10 \\
+        In E2, set B2 and B3 to -10 \\
+        In E5, set D1 to -10 \\
+        In E2, set B1 to -10
+    \item \textbf{Result}: \\
+        \texttt{necessary}=10 and \texttt{final}=-2.5 \\
+        \texttt{necessary}=20 and \texttt{final}=-5 \\
+        \texttt{necessary}=65 and \texttt{final}=-8 \\
+        \texttt{necessary}=15 and \texttt{final}=-10 \\
+        \texttt{necessary}=8.75 and \texttt{final}=-10  
+    \item \textbf{Variations}: 5 cases.
+\end{itemize}
+\vfill
+\nextAutoTest{Grades greater than 10}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: Set some exams to -10. \\
+        In E2, set B1 to 11 \\
+        In E4, set C1 to 11 \\
+        In E4, set C1 to 100 
+    \item \textbf{Result}: \\
+        \texttt{necessary}=3.5 and \texttt{final}=2.2 \\
+        \texttt{necessary}=0 and \texttt{final}=5.5 \\
+        \texttt{necessary}=0 and \texttt{final}=50 
+    \item \textbf{Variations}: 3 cases.
+\end{itemize}
+\vfill
+\nextAutoTest{Grades are shared}
+\begin{itemize}[noitemsep]
+    \item \textbf{Description}: In E3 set C1 and C2 to 10. And then change the evaluation to E4.
+    \item \textbf{Result}: \\
+        In E3: \texttt{necessary}=3.75 and \texttt{final}=2 \\
+        In E4: \texttt{necessary}=0 and \texttt{final}=10
+    \item \textbf{Variations}: Fill E3 and then E4 + Fill E4 and then E3.
+\end{itemize}
+\vfill
+
+% \nextAutoTest{}
+% \begin{itemize}[noitemsep]
+%     \item \textbf{Description}: 
+%     \item \textbf{Result}: \texttt{necessary}= and \texttt{final}=
+%     \item \textbf{Variations}: All evaluations $\times$ 
+% \end{itemize}
+
+
+% \begin{autoTestTable}{
+%     Every 
+% }
+% 1. & A1=10 & necessary=3.33 and final=2.5 \\
+% 1. & Clear all & necessary=5 and final=0 \\
+% 1. & A2=10 & necessary=3.33 and final=2.5 \\
+% 1. & Clear all & necessary=5 and final=0 \\
+% 1. & A3=10 & necessary=3.33 and final=2.5 \\
+% 1. & Clear all & necessary=5 and final=0 \\
+% 1. & A4=10 & necessary=3.33 and final=2.5 \\
+% \end{autoTestTable}

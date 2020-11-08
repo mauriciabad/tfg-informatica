@@ -1,0 +1,150 @@
+\section{Manual tests}
+
+These tests are end to end tests that test the application’s workflow from beginning to end. They aim to replicate real user scenarios so that the system can be validated for integration and data integrity. They have to be followed sequentially.
+    
+\nextManTest{Sign-in}\label{e2e:x}
+\textbf{Prerequisit}: A google account that hasn't been registered yet in GradeCalc.
+\begin{testTable}
+1. & Click the user icon. & Opens the log-in/log-out screen. \\
+2. & Click the log-in button. & Redirects to Google's log-in. \\
+3. & Log-in with an unregistered account. & Redirects to GradeCalc's dashboard screen. The user is now registered. The user is logged-in into the app.\\
+\end{testTable}
+\vfill
+
+\nextManTest{Log-in}\label{e2e:x}
+\textbf{Prerequisit}: A google account that is registered in GradeCalc.
+\begin{testTable}
+1. & Click the user icon. & Opens the log-in/log-out screen. \\
+2. & Click the log-in button. & Redirects to Google's log-in. \\
+3. & Log-in with an unregistered account. & Redirects to GradeCalc's dashboard screen. The user is logged-in into the app.\\
+4. & Close and open the app again. & The user is still logged-in into the app.\\
+\end{testTable}
+\vfill
+
+\nextManTest{Log-out}\label{e2e:x}
+\textbf{Prerequisit}: The user is logged-in.
+\begin{testTable}
+1. & Click the user icon. & Opens the log-in/log-out screen. \\
+2. & Click the log-out button. & The app navigates to the dashboard screen. The user is no longer logged-in into the app. The subjects in the dashboard are the same. \\
+\end{testTable}
+\vfill
+
+\nextManTest{Subject card}\label{e2e:x}
+\textbf{Prerequisit}: There is a subject card in the dashboard. This subject has to have 2 evaluations: ''Partials'': L1(25\%) L2(25\%) P1(25\%) P2(25\%), and ''Final'': L1(25\%) L2(25\%) F(50\%).
+\begin{testTable}
+1. & Click the collapsed card. & The card expands. \\
+2. & Empty all input fields and select the ''Partial'' evaluation. & The final grade is 0. The necessary grade is 5. \\
+3. & Input a 10 in L1. & The final grade changes to 2.5. The necessary grade changes to 3.33. \\
+4. & Input a 0 in P1. & The final grade stays 2.5. The necessary grade changes to 5. \\
+5. & Select Final evaluation. & The card now hides P1 and P1. The L1's grade stays to 10. The final grade stays at 2.5. The necessary grade changes to 3.33. \\
+6. & Input an 8 in F. & The final grade changes to 6.5. The necessary grade changes to 0. The subject shoots confetti. \\
+7. & Input a ''a'' character in L1. & It can't be done, the keypress is ignored. \\
+8. & Input an 11 in L2. & The final grade changes to 9.25. The necessary stays 0. The input is marked with a red border.\\
+9. & Close and open the app. & The information is still the same.\\
+\end{testTable}
+\vfill
+
+\nextManTest{Search and add subject}\label{e2e:x}
+\textbf{Prerequisit}: \textit{None.}
+\begin{testTable}
+1. & Click the plus icon. & Opens the search screen. \\
+2. & Type ''A'' & It shows 20 results maximum. The ''a''s in the results are emphasized. The create button disappears. \\
+3. & Erase everything & The screen looks like before typing the ''a''. \\
+4. & Type ''AC'' & It shows, at least, AC and AC2. \\
+5. & Click the checkbox of AC & The checkbox looks checked. \\
+6. & Click the add button & The app navigates to the dashboard. The AC subject is added to the dashboard. \\
+7. & Close and open the app. & The subject is still in the dashboard. \\
+8. & Click the plus icon. & Opens the search screen. \\
+9. & Type a long string of random letters, something like ''asgfchwkaoqxjls'' & There is no results and a message shows up along with the create button.\\
+10. & Type ''Arquitectura'' & It shows, at least, AC and AC2. The AC subject's checkbox is disabled because the subject is already added.  \\
+11. & Type ''Arquitecture''. (it has a typo) & It shows, at least, AC and AC2.  \\
+12. & Click the checkbox of AC2. & The checkbox looks checked. \\
+13. & Click the back button. & The app navigates to the dashboard. The AC2 subject is not added to the dashboard. \\
+\end{testTable}
+\vfill
+
+\nextManTest{Create subject}\label{e2e:x}
+\textbf{Prerequisit}: \textit{None.}
+\begin{testTable}
+1. & Click the plus icon. & Opens the search screen. \\
+2. & Click the create button. & Opens the create screen. \\
+3. & Click the create button & It shows an error and doesn't proceed with the creation. It asks you to fill the information fields. \\
+4. & Fill the information fields & Nothing. \\
+5. & Click the create button & It shows an error and doesn't proceed with the creation. It asks you to fill the evaluation grid. \\
+6. & Type something in any cell of the first row & The row becomes part of the grid and an empty row is added at the bottom. \\
+7. & Type something in any cell of the first column & The column becomes part of the grid and an empty column is added at the right. \\
+8. & Fill more rows and columns. & Nothing. \\
+9. & Empty all fields of a row & The row is deleted. \\
+10. & Empty all fields of a column & The column is deleted. \\
+11. & Input one weight of 101, -1 and 0.00001 & The input appears with a red border, but lets you use the values. \\
+12. & Input weights that add to 100\% & The percentage sun at the bottom of the column adds to also 100\%. \\
+13. & Click the create button & The app navigates to the dashboard. The created subject is added to the dashboard. \\
+\end{testTable}
+\vfill
+
+\nextManTest{Edit subject}\label{e2e:x}
+\textbf{Prerequisit}: There is a subject card in the dashboard.
+\begin{testTable}
+1. & Click the pencil icon in the subject card. & Opens the edit screen. \\
+2. & Append an ''a'' to the end of all information fields and change the color. & Nothing. \\
+3. & Click the back button and open the edit screen again. & The subject is not edited. \\
+4. & Append an ''a'' to the end of all information fields and change the color. & Nothing. \\
+5. & Add a new exam in the evaluation. & Nothing. \\
+6. & Click the edit button. & The app navigates to the dashboard. The subject is edited. \\
+7. & Close and open the app. & The information is still the same. \\
+\end{testTable}
+\vfill
+
+\nextManTest{Delete subject}\label{e2e:x}
+\textbf{Prerequisit}: Have a subject in the dashboard.
+\begin{testTable}
+1. & Hover the subject card and click the delete button & The subject card is removed. A notification banner shows, letting the user undo the action. \\
+2. & Click undo in the notification. & The subject is re-added with the same grades and editions it had. \\
+3. & Close and open the app. & The subject is still in the dashboard. \\
+4. & Hover the subject card and click the delete button & The subject card is removed. The notification banner shows again. \\
+5. & Close and open the app. & The subject is not in the dashboard. \\
+\end{testTable}
+\vfill
+
+\nextManTest{Offline}\label{e2e:x}
+\textbf{Prerequisit}: There is a subject card in the dashboard.
+\begin{testTable}
+1. & Enable airplane mode. & Nothing visually happens. \\
+2. & Modify one grade. & Works as usual. \\
+3. & Close and open the app. & The information is still the same. \\
+4. & Disable airplane mode. & Nothing visually happens. \\
+5. & Close and open the app. & The information is still the same. \\
+\end{testTable}
+\vfill
+
+% \nextManTest{Account synchronization}\label{e2e:x}
+% \textbf{Prerequisit}: .
+% \begin{testTable}
+% 1. &  &  \\
+% createe subject
+% edit subject
+% change grade
+% change grade offline
+% change grade offline, then change grade online in incognito. go online
+% delete subject
+% \end{testTable}
+% \vfill
+
+
+
+
+
+
+
+
+% \subsubsection{Variations}
+% \begin{multicols}{2}
+% \begin{itemize}
+%     \item a
+%     \item a
+%     \item a
+%     \item a
+% \end{itemize}
+% \end{multicols}
+
+% US\ref{us:create-subject}

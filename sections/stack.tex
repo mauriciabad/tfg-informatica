@@ -1,0 +1,96 @@
+% \newpage
+\section{Tech stack}
+\label{sec:stack}
+
+A tech stack is the set of technologies an organization uses to build a web or mobile application. It is a combination of programming languages, frameworks, libraries, patterns, servers, UI/UX solutions, software, and tools used by its developers.\cite{tech-stack}
+
+This the GradeCalc's Tech stack and what is each technology used for:
+
+\subsection*{Application \& Data}
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item \textbf{Firebase}: Backend and non-relational database.
+    \item \textbf{Netlify}: Web hosting and Continuous deployment.
+    \item \textbf{Algolia}: Full-text search service for Firebase.
+    \item \textbf{Heroku}: Run a cron job to send data from Firebase to Algolia.
+    \item \textbf{Google fonts}: Serves fonts. Nunito \cite{nunito} is the one used.
+\end{itemize}
+
+\vspace{-5mm}
+\subsection*{Languages}
+\begin{multicols}{4}
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item \textbf{JavaScript}
+    \item \textbf{CSS}
+    \item \textbf{HTML}
+    \item \textbf{JSON}
+\end{itemize}
+\end{multicols}
+
+\subsection*{Business Tools}
+\begin{multicols}{2}
+\begin{itemize}[noitemsep]
+    \item \textbf{Visual Studio Code}: Code editor with debugging, intelligent code completion, embedded Git and more.
+    \item \textbf{Figma}: Modern interface design application.
+    \item \textbf{Jira}: Issue tracking applicaion  that allows agile project management and more.
+    \item \textbf{Google analytics}: Web analytics service that tracks and reports website traffic. 
+    \item \textbf{Google search console}: SEO application to check indexing status and optimize visibility of their websites
+    \item \textbf{Namecheap}: Domain name registrar.
+    \item \textbf{Linux}: Operating system to develop.
+\end{itemize}
+\end{multicols}
+
+\subsection*{DevOps}
+\begin{multicols}{2}
+\begin{itemize}[noitemsep]
+    \item \textbf{GitHub}: Git version management system, store the code and allow many automatons. 
+    \item \textbf{GitHub bots}: Do some tasks automatically, like update depencencies and compress images.
+    \item \textbf{Lighthouse}: Audits the PWA for performance, accessibility, progressive web apps, SEO and more.
+    \item \textbf{Code Climate}: Static analysis of the code quality, to avoid code repetition, unused code and more.
+    \item \textbf{Travis CI}: Run CI.
+    \item \textbf{ESLint}: Static analysis of JavaScript to prevent run-time errors and enforce a standard style and practices.
+    \item \textbf{Babel}: Compile modern JavaScript into old JavaScript, this improves browser compatibility.
+    \item \textbf{Autoprefixer}: Adds vendor prefixes to unsupported CSS properties.
+    \item \textbf{Gulp}: Optimize the files. It compresses images, minifies code, runs babel and autoprefixer and more.
+\end{itemize}
+\end{multicols}
+
+\clearpage\newpage
+\subsection{Analysis of alternatives}
+Most technologies have alternatives so I'll explain why I chose each one.
+
+\subsection*{Application \& Data}
+\begin{itemize}
+    \item \textbf{Firebase}: Very generous free plan and offers a great developer experience. It has many tools that simplify a lot of tasks, like login, database, permissions, cloud functions, hosting... I also had prior experience with it, so I didn't have to learn it from scratch. 
+    \item \textbf{Netlify}: Very generous free plan and offers a great developer experience. Alternatives considered: Firebase, Zeit, and GitHub Pages. 
+    GitHub Pages can't be used because the files need to be built and it didn't allow that when the project started. 
+    Firebase is not used to avoid relying on it too much and it offers way less storage and bandwidth than Netlify. 
+    Zeit is a great alternative they are equivalent, I just personally like more Netlify. 
+    
+    Another important point for Netlify is that they are really committed to the opensource community, and they offer their Pro plan completely for free to Open Source organizations \cite{netlify-opensource}. By using their service and giving them visibility, more companies will follow their strategies, helping a lot the open-source community.
+    \item \textbf{Algolia}: The solution recommended by Firebase itself. They mention that you can also use ElasticSearch but its really expensive and not as easy to setup. \cite{algolia-why}
+    \item \textbf{Heroku}: The easiest workaround I found to automatically update Algolia.
+    \item \textbf{Google fonts}: The most used font hosting by difference, it's the default go-to.
+\end{itemize}
+
+\subsection*{Business Tools}
+\begin{itemize}
+    \item \textbf{Visual Studio Code}: It's becoming the standard for web development, it' brings a really good developer experience.
+    \item \textbf{Figma}: It's very similar to its alternatives: Adobe XD and Sketch. Sketch is discarded because it can only be installed in macOS. Adobe XD is equivalent in terms of features, but I like more Figma as a company than Adobe, because they deliver meaningful updates, innovate and don't overprice their products. 
+    \item \textbf{Jira}: It's an excellent app used by a lot of companies, so learning it will benefit me in future jobs. I also considered some alternatives like Trello, but it's really limited and its UX is poor. The same happens for Taiga although it has more features than Trello.
+    \item \textbf{Google search console}: The only available to manage SEO in Google. It has many useful features, like seeing a report by the crawler and getting notifications when the crawler detects errors.
+    \item \textbf{Namecheap}: There are lots of cheap domain registrars out there. I chose this one because their support is effective and I like its simple UI. But it's a subjective decision, in this case almost any service works.
+    \item \textbf{Linux}: In terms of usability and compatibility it's not as good as macOS or even Windows. But for development all the necessary apps are compatible and the terminal is really useful. It's open-source so promoting it leads to a positive impact on society.
+\end{itemize}
+
+\subsection*{DevOps}
+\begin{itemize}
+    \item \textbf{GitHub}: It's the best platform for hosting Git repositories, it has a great community a tone of integrations with other services. GitLab is also great but it's intended to be a self-hosted solution for git repositories. Then there's bitbucket, but its main target is companies with private and proprietary code. Most OpenSource projects are on GitHub, so this one is no exception.
+    \item \textbf{GitHub bots}: All of them are the only of it's kind. I use: Dependabot to update dependencies. Imgbot to compress images. Stale to close inactive issues.
+    \item \textbf{Lighthouse}: It's the best free auditing tool for websites as of 2020. Some other audits are still relevant because they are specialized in certain aspects, like Google PageSpeed Insights that uses Real-World Field Data. But for this project Lighthouse is more than enough.
+    \item \textbf{Code Climate}: It provides really good advice and it's free for open-source projects. I didn't choose it for anything in particular, besides that, I already knew it. It's more than enough for this project, so spending time looking for a better option wouldn't affect that much and be a waste of time.
+    \item \textbf{Travis CI}: Very generous free plan, offers a great developer experience, and it's the most popular solution. There's also Cirlce CI, which is almost the same, but less popular. I rather TravisCI because it has more community and I can find more code snippets for Travis than any other CI tool.
+    \item \textbf{ESLint}: The best JavaScript lantern by far.
+    \item \textbf{Babel}: The only and best one.
+    \item \textbf{Autoprefixer}: The only and best one.
+    \item \textbf{Gulp}: It's super simple and fast to setup. I chose it over Webpack because of its simplicity, although if the project grows more I'll have to migrate to Webpack. I chose Gulp over Grunt because Grunt can only run one task at a time, while Gulp can run multiple ones in parallel.
+\end{itemize}

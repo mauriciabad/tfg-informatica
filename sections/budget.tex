@@ -1,0 +1,270 @@
+\section{Budget}
+\label{sec:budget}
+% GradeCalc was born as a hobby project, therefore all the costs are minimized as much as possible.
+
+\subsection{Human resources costs}
+This is an open-source project driven by free contributions from the community. The project will start with only one contributor, me, but many people may get involved at some point. Because no one will get paid, the human resources costs will be \textbf{0€}. Nonetheless, I can estimate how much would this cost if people got hired to develop it, but I won't consider them in the total project sum.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrrrr}
+    \toprule
+    \textbf{Rol} & \textbf{Weekly hours} & \textbf{Pay} & \textbf{Gross salary} & \textbf{Expense} \\
+    \midrule
+    Project Manager & 10h & 25€/h & 1000€/month & 1300€/month \\
+    Front-end developer & 20h & 20€/h & 1300€/month & 2080€/month \\
+    Full-stack developer & 20h & 20€/h & 1300€/month & 2080€/month \\
+    \midrule
+    \textbf{Total} & \textbf{50h} & & \textbf{4200€/month} & \textbf{5460€/month} \\
+    \bottomrule
+\end{tabular}
+\caption{Ideal team}
+\label{ideal-team}
+\end{table}
+I estimated that a 30\% of the gross salary is paid to Social Security.
+\[Expense=GrossSalary\times1.3\]
+
+According to the Gantt diagram \ref{gantt}, this team would be working for 6 sprints. This translates to 3 months, meaning that the total human resources costs would be 16380€. 
+
+It's important to mention that they would do many more tasks than the ones I'll be able to do alone, so the planning would end up looking very different and the estimations I made inapplicable. Also, the Memory Writing, Report, and Defense blocks wouldn't make sense to have, so they would have even more sprints, increasing this cost.
+
+\subsubsection{Salaries}
+
+The total compensation per year of a \textbf{Project Manager} in Barcelona ranges between \textbf{22K€ and 58K€} \cite{project-manager-salary}. I chose 25€/h (\textbf{52K€}) because it's in that range.
+
+The total compensation per year of a \textbf{Front End Developer} in Barcelona ranges between \textbf{19K€ and 40K€} \cite{front-end-salary}. I chose 20€/h (\textbf{41.6K€}) that is slightly above that range because the developer will also take extra responsibilities.
+
+The total compensation per year of a \textbf{Full Stack Developer} in Barcelona ranges between \textbf{19K€ and 42K€} \cite{full-stack-salary}. I chose 20€/h (\textbf{41.6K€}) because it's in that range. I also thought that having similar salaries would be fairer for everyone on the team.
+
+\subsubsection{Why that team?}
+
+The Project Manager would be in charge of things like optimizing team performance, defining requirements, unblocking the others, having a larger picture of the project.
+
+The Front-end developer would be an expert on the javascript framework chosen and answer questions that the other developer may need.
+
+Because most of the work will be in the front-end and the back-end is very little, a full-stack would do the little back-end available first.
+
+\newpage
+\subsection{Hardware costs}
+\label{sec:hardware}
+Regarding hardware a similar thing happens, no specific hardware will be bought for this project and everything is going to be reused so hardware costs will be \textbf{0€} also. If the developers don't have it they just don't collaborate or someone else tests the app. The hardware I'm actually going to use is:
+\begin{multicols}{2}
+\begin{itemize}
+    \item My laptop, a Surface Pro 2018
+    \item My phone, a Google Pixel 2 XL.
+    \item Sporadically, iPhones from friends.
+    \item Sporadically, laptops from friends.
+\end{itemize}
+\end{multicols}
+ But, again I can estimate the costs in case all the hardware had to be bought.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{llrrrr}
+    \toprule
+    \textbf{Item} & \textbf{Model} & \textbf{Amount} & \textbf{Cost} & \textbf{Useful life} & \textbf{Expense} \\
+    \midrule
+    Laptop & Apple MacBook Pro 2019 & 3 & 4500€ & 5 years & 75€/month \\
+    Mobile & Google Pixel 4 XL & 1 & 760€ & 3 years & 21.11€/month \\
+    Mobile & Apple iPhone 11 & 1 & 630€ & 4 years & 13.13€/month \\
+    \midrule
+    \textbf{Total} & & & \textbf{3890€} & & \textbf{108.24€/month} \\
+    \bottomrule
+\end{tabular}
+\caption{Ideal hardware}
+\label{ideal-hardware}
+\end{table}
+
+The VAT of the hardware could be saved if they are bought by a company.
+And if this is too much to pay, older or second-hand devices can be bought instead. Once the project finishes all hardware has to be sold to be afforded.
+
+\subsubsection{Why those devices?}
+
+To test the web app developers would need different operating systems and browsers. To test all browsers with a >2\% usage and 81\% global coverage, the web app needs to run in these browsers (Table \ref{browser-list-table}).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrr}
+    \toprule
+    \textbf{BROWSER}& \textbf{USAGE} \\
+    \midrule
+    \textbf{Mobile Browsers} & \textbf{48.17\%} \\
+    \midrule
+    \hspace{3mm}Chrome for Android 78 & 34.26\% \\
+    \hspace{3mm}UC Browser for Android 12.12 & 2.20\% \\
+    \hspace{3mm}iOS Safari 13.3 & 9.29\% \\
+    \hspace{3mm}Samsung Internet 10.1 & 2.42\% \\
+    \midrule
+    \textbf{Desktop Browsers} & \textbf{32.42\%} \\
+    \midrule
+    \hspace{3mm}Chrome 79 & 16.86\% \\
+    \hspace{3mm}Chrome 80 & 10.66\% \\
+    \hspace{3mm}Firefox 70 & 2.05\% \\
+    \hspace{3mm}Safari 13 & 2.85\% \\
+    \midrule
+    \textbf{Total} & \textbf{80.79\%} \\
+    \bottomrule
+\end{tabular}
+\caption{Browsers with more than >2\% usage \cite{browserl.ist}}
+\label{browser-list-table}
+\end{table}
+
+All those browsers can be installed in macOS, iOS, and Android. So with a MacBook, an iPhone, and a Pixel, we can perform tests in all of them. Those devices are the newest ones when buying them, so they will last longer and get outdated latter.
+
+Developers will use the same laptop to code the app. They could do this with any laptop. All tasks can be done with these devices.
+
+\newpage
+\subsection{Software costs}
+
+This project free software as much as possible: Git, GitHub, Jira, Netlify, Firebase, Algolia, Travis CI, Figma, Google Analytics, VS Code, Overleaf, Linux...
+The only unavoidable cost is the domain registration. GradeCalc uses a .app domain which costs \textbf{15€/year}, slightly more than a .com or .net domain. This is the only software expense by now, but if the app gets a lot of traffic it may get extra charges.
+
+Most of the services that this project uses are free until a certain point. From that point the price increases drastically. The following software needs to be looked after to avoid unexpected charges:
+\begin{itemize}
+    \item \textbf{Firebase}: The free tear is enough, if the app doesn't waste reads/writes to firestore.  \url{https://firebase.google.com/pricing}
+    \item \textbf{Algolia}: May not be enough. \url{https://www.algolia.com/pricing/}
+    \item \textbf{Jira}: The free tear is enough. \url{https://www.atlassian.com/software/jira/pricing}
+    \item \textbf{Netlify}: The free tear is enough. \url{https://www.netlify.com/pricing/}
+\end{itemize}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{llr}
+    \toprule
+    \textbf{Service} & \textbf{Plan} & \textbf{Cost} \\
+    \midrule
+    Domain & Domain Renewal & 15€/year \\
+    Firebase & Spark Plan & Free \\
+    Algolia & Community & Free \\
+    Jira & Free & Free \\
+    Netlify & Starter & Free \\
+    \midrule
+    \textbf{Total} & & \textbf{1.25€/month} \\
+    \bottomrule
+\end{tabular}
+\caption{Software expenses}
+\label{service-costs-table}
+\end{table}
+
+\newpage
+\subsection{Other costs}
+
+The project is going to be done with my current resources. But, again, simulating that a team would be hired, they would need a place to work. Barcelona offers coworking spaces for small companies or temporal projects, which fit perfectly this project. BarcelonaNavigator.com has an up-to-date list of recommended coworking spaces in Barcelona, from there I found SOWO that offers the Mini Flex rate \cite{coworking} that fits our needs:
+\begin{multicols}{2}
+\begin{itemize}
+    \item \textbf{Flexible Desk}
+    \item \textbf{1h Meeting rooms}
+    \item \textbf{Access from 8:30-13:30h} \newline or from 14:00-19:00h
+    \item Electricity and water included
+    \item Internet connection
+    \item Common areas access
+    \item Coffee, water and snacks free
+    \item 50 B/W prints
+    \item Central location
+\end{itemize}
+\end{multicols}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lllr}
+    \toprule
+    \textbf{Service} & \textbf{Rate} & \textbf{Company} & \textbf{Cost} \\
+    \midrule
+    Co-working space & Mini Flex \cite{coworking} & SOWO & 140€/month + VAT \\
+    \midrule
+    \textbf{Total} & & & \textbf{140€/month + VAT} \\
+    \bottomrule
+\end{tabular}
+\caption{Indirect expenses}
+\label{other-costs-table}
+\end{table}
+
+\newpage
+\subsection{Cost contingency}
+
+10\% of the estimated costs would be saved to pay for unexpected expenses.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrrr}
+    \toprule
+    \textbf{Category} & \textbf{Cost} & \textbf{Percentage} & \textbf{Contingency} \\
+    \midrule
+    Human resources & 5460.00€/month & 10\% & 546.00€/month \\
+    Hardware & 58.24€/month & 10\% & 5.83€/month \\
+    Software & 1.25€/month & 10\% & 0.13€/month \\
+    Other & 140.00€/month & 10\% & 14.00€/month \\
+    \midrule
+    \textbf{Total} & & & \textbf{586€/month} \\
+    \bottomrule
+\end{tabular}
+\caption{Contingencies expenses}
+\label{contingency-costs-table}
+\end{table}
+\subsection{Unforeseen and extraordinary costs}
+
+The main risk is spending too much time learning instead of coding, to mitigate that, the planning sets on each sprint a reasonable time to learn. But maybe it's not enough.
+
+In terms of the project, if this happened the less important tasks would be skipped. This solution wouldn't add any extra cost at the expense of a less complete app.
+
+If the project was developed by a team and they go too slow to finish, they would work for one extra month or add a new member.
+\[MonthCost=HumanResources+Hardware+Software+Other+Contingencies\]
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrrr}
+    \toprule
+    \textbf{Event} & \textbf{Event cost} & \textbf{Odds} & \textbf{Cost} \\
+    \midrule
+    Extra month & 6295.49€ & 50\% & 3147.75€ \\
+    \midrule
+    \textbf{Total} & & & \textbf{3147.75€} \\
+    \bottomrule
+\end{tabular}
+\caption{Unforeseen expenses}
+\label{extra-costs-table}
+\end{table}
+
+\newpage
+\subsection{Total costs}
+
+\begin{table}[ht!]
+\centering
+\begin{tabular}{lrrr}
+    \toprule
+    \textbf{Category} & \textbf{Category cost} & \textbf{Amount} & \textbf{Total cost}\\
+    \midrule
+    Human resources & 5460€/month & 3months & 16380.00€ \\
+    Hardware & 3890€ & 1 & 3890.00€ \\
+    Software & 15€/year & 5year & 75.00€ \\
+    Other & 140€/month & 3months & 420.00€ \\
+    Contingencies & 586€/month & 3months & 1758.00€ \\
+    Unforeseen & 3147.75€ & 1 & 3147.75€ \\
+    \midrule
+    \textbf{Total} & & & \textbf{25670.75€} \\
+    \bottomrule
+\end{tabular}
+\caption{Total expenses}
+\label{contingency-costs-table}
+\end{table}
+
+\newpage
+\subsection{Management control}
+
+To ensure the compliance of the initial budget, during the sprint review (\ref{sec:sprint-review}) at the end of each sprint I will calculate:
+\begin{itemize}
+    \item Human resources costs deviation.
+    \item General costs deviation.
+    \item Unforeseen costs deviation.
+    \item Total costs until this point.
+\end{itemize}
+
+The deviations are going to be calculated with the following formulas:
+\[Budget=HumanResources + Hardware + Software + Others + Contingencies + Unforessn\]
+\[Estimated=Budget-Contingencies-Unforeseen\]
+\[Deviation=Estimated-Real\]
+\[UsedBudget=\frac{CurrentlySpent}{Estimated}\times100\%\]
+The \textit{UsedBudget} should grow suddenly at the beginning, due to the hardware and software acquisition, and then grow linearly until 100\%. If we observe a different growing rate more money than estimated is being spent.
+
+\subsection{Changes in the budget}
+
+Although the planning changed a bit, the hours spent, the material used, and the services used are the same, so the costs don't vary.

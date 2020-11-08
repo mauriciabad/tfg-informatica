@@ -1,0 +1,313 @@
+\clearpage\newpage
+\section{Tasks}
+
+This section defines all the tasks to do in order to fulfill all the requirements that the application must meet. These tasks are very specific and can be directly placed into the Kanban board. They are organized by screens and components of the app. This section will help understand all the features implemented and it's level of detail.
+
+% This section defines all the functional requirements that the application must meet.
+% Overall, the app may look like it does a few things, but the ones it does are very polished. For example, the subject card alone has a tone of features, and looking at it in a glance seems that it must be trivial, but it has many small details that make the app truly productive and enjoyable. To come up with these requisites, there was an intense thought process to find the simplest way to present the features to the user.
+
+
+\subsection*{Dashboard}
+A user wants to see and interact with his subjects and grades.
+
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] It is the homescreen of the app.
+    \item[\nextTask{}\label{req:x}] It contains subject cards.
+    \item[\nextTask{}\label{req:x}] When the app is opened, the subjects are retrieved from the device's local storage. And a non blocking spinner is shown while the subjects are being loaded.
+    \item[\nextTask{}\label{req:x}]  When the app is opened and the user is logged-in, subjects are synced with his account. While this happens a non blocking spinner appears.
+    \item[\nextTask{}\label{req:x}] The subject cards are sorted alphabetically by \textit{shortName}.
+    \item[\nextTask{}\label{req:x}] When there are no subject cards, the add button starts a looping animation, similar to the rubberBand from the Animate.css\cite{animate-css} library, to draw attention.
+    \item[\nextTask{}\label{req:x}] When there are no subject cards, the empty space is replaced with an explanatory text about the app. At the end of the text, there are instructions to add the first subject. This text serves two purposes, inform the user, and optimize the search engine indexing of the app.
+    \item[\nextTask{}\label{req:x}] It has a header bar on top of the subject cards and in the top of the screen.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] The header bar has, in the left, an icon that when clicked goes to the login screen.
+        \item[\nextTask{}\label{req:x}] The header bar has, in the center, the app name.
+        \item[\nextTask{}\label{req:x}] The header bar has, in the right, an icon that when clicked goes to the search subject screen.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It is responsive and the subjects are rearranged depending on the screen width.
+    \item[\nextTask{}\label{req:x}] When all subject cards displayed are passed, a present appears at the bottom of the dashboard along with a congratulating text.
+    \item[\nextTask{}\label{req:x}] When the gift is clicked a funny congratulating video appears at the bottom of the screen and plays automatically in a loop.
+    \item[\nextTask{}\label{req:x}] If the app meets the PWA installation criteria\cite{pwa-install-criteria}, a notification shows up with the install action.
+\end{itemize}
+
+\subsection*{Subject card}
+A user wants to work with a specific subject in the dashboard.
+
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] It can be in collapsed or expanded state.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] A subject card is collapsed by default.
+        \item[\nextTask{}\label{req:x}] When a subject card is expanded it pushes the other ones instead of overlapping them.
+        \item[\nextTask{}\label{req:x}] When a subject card is clicked where there's no intractable elements, it toggles its state from collapsed or expanded. The intractable elements are the subject bar, exam input, evaluation selector, edit icon and delete button.
+        \item[\nextTask{}\label{req:x}] There's an animation for when a subject card is collapsed or expanded.
+        \item[\nextTask{}\label{req:x}] A collapsed card doesn't show the exams' inputs nor the evaluation selector. And a expanded one does. 
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It has a graphical representation of the selected evaluation, called \textit{subject bar}. The representation is a bar divided in sections where each section represents an exam and it's length is proportional to the exam weight.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] In the subject bar, hovering a section shows a tooltip displaying the exam weight in percentage.
+        \item[\nextTask{}\label{req:x}] In the subject bar, each section contains the exam name and the grade. If the exam is undone, it contains the necessary grade instead.
+        \item[\nextTask{}\label{req:x}] In the subject bar, the done exams have the subject's color as background color.
+        \item[\nextTask{}\label{req:x}] In the subject bar, the undone exams have a light background color.
+        \item[\nextTask{}\label{req:x}] In the subject bar, the exams are sorted by same order that they are in the exam array of the evaluation. Not alphabetically nor per weight.
+        \item[\nextTask{}\label{req:x}] In the subject bar, when a section is clicked it focuses the exam's input. If the card is collapsed it's also expanded.
+        \item[\nextTask{}\label{req:x}] In the subject bar, when a section is to narrow to see the full grade or name, the first characters are visible. Instead of the characters in the middle. 
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It has the final grade in big text.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] The final grade is calculated by multiplying each exam grade by its weight and summing all the values. If an exam is undone a 0 is used in the calculation.
+        \item[\nextTask{}\label{req:x}] The final grade is green if it's greater or equal than five and red otherwise.
+        \item[\nextTask{}\label{req:x}] The final grade is rounded to two decimals.
+        \item[\nextTask{}\label{req:x}] When the final grade passes from a number lower than five to one greater or equal to five a confetti animation is triggered. The animation shoots confetti over the subject card to congratulate the user. 
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It has an evaluation selector if there are more than one.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] When the evaluation is changed, the card updates instantly it's information (exam inputs, subject bar, final grade...).
+        \item[\nextTask{}\label{req:x}] If an exam with the same name is in more than one evaluations, the grade is shared among them. It means that the same exam can be used in different evaluations.
+        \item[\nextTask{}\label{req:x}] The application remembers what is the selected evaluation. If the user closes and opens the app again, the selected evaluation doesn't change.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It has the subject's \textit{shortName} in big text.
+    \item[\nextTask{}\label{req:x}] It has an input field for each exam in the selected evaluation.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] The inputs are grouped by their type attribute.
+        \begin{itemize}[leftmargin=2cm]
+            \item[\nextTask{}\label{req:x}] The type is styled like a subtitle.
+            \item[\nextTask{}\label{req:x}] Next to the type, there's the sum of the weights of the exams with that type in percentage and rounded.
+            \item[\nextTask{}\label{req:x}] The types are sorted by the same order that they are in the exam array of the evaluation. Not alphabetically nor per weight.
+            \item[\nextTask{}\label{req:x}] The exam inputs inside the type are sorted by same order that they are in the exam array of the evaluation. Not alphabetically nor per weight.
+        \end{itemize}
+        \item[\nextTask{}\label{req:x}] The exam input has different styles depending on it's vaule.
+        \begin{itemize}[leftmargin=2cm]
+            \item[\nextTask{}\label{req:x}] When the exam input has a valid value, it's considered a \textit{done exam}. It has the subject's color as background.
+            \item[\nextTask{}\label{req:x}] When the exam input has an empty value, it's considered an \textit{undone exam}. It has a gray background and it's placeholder is the necessary grade to pass.
+            \item[\nextTask{}\label{req:x}] When the exam input is focused it has a black border.
+            \item[\nextTask{}\label{req:x}] When the exam input's value isn't a number nor empty, it has a gray background with red borders. And it's considered an \textit{undone exam}.
+            \item[\nextTask{}\label{req:x}] When the exam input's value is a number but lower than 0 or greater than 10, it has the subject's color as background with red borders. And it's considered a \textit{done exam}.
+            \item[\nextTask{}\label{req:x}] If the exam has weight 0, it's hidden.
+        \end{itemize}
+        \item[\nextTask{}\label{req:x}] At the left of the input there's a label with it's name.
+        \item[\nextTask{}\label{req:x}] The exam input only accepts numbers (digits, periods, commas, plus, minus and e for exponential). And in digital keyboards shows a numeric keyboard.
+        \item[\nextTask{}\label{req:x}] The necessary grade is the necessary grade to receive in all the remaining undone exams to get a 5 in the final grade.
+        \item[\nextTask{}\label{req:x}] Every time a grade is changed other information is updated instantly.
+        \begin{itemize}[leftmargin=2cm]
+            \item[\nextTask{}\label{req:x}] The necessary grade is updated.
+            \item[\nextTask{}\label{req:x}] The final grade is updated.
+            \item[\nextTask{}\label{req:x}] If the user is logged-in, the new grade is sent to his account.
+        \end{itemize}
+        \item[\nextTask{}\label{req:x}] The exam inputs take a reasonable space for their expected value length, usually less than 6 characters.
+        % \item[\nextTask{}\label{req:x}] The exam inputs can have 10 characters at maximum.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It has a edit icon.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] The edit icon has a hover animation.
+        \item[\nextTask{}\label{req:x}] When clicked opens the edit subject screen of the current subject. With the title ``Edit subject'' and the action button ``Save''.
+        \item[\nextTask{}\label{req:x}] If the user finally edits the subject, the subject card's information is updated instantly (name, color, exam inputs...).
+        \item[\nextTask{}\label{req:x}] If the user finally edits the subject, and he's logged-in, the subject is also edited in his account.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It has a delete button.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] Hovering the card displays the delete button.
+        \item[\nextTask{}\label{req:x}] The delete button has tree animations. On show it fades in and scales up to normal. On hover it shakes. On click it scales down.
+        \item[\nextTask{}\label{req:x}] When the delete button is clicked the card is deleted.
+        \item[\nextTask{}\label{req:x}] When a card is deleted, the other cards move to their new locations and sizes in a smooth animation.
+        \item[\nextTask{}\label{req:x}] When a card is deleted, a notification appears saying "You deleted \textit{subject's shortName}"\space and a action button says "undo". When the action is clicked the subject is restored, like nothing happened. If the user is logged-in, undoing the action re-adds the subject to his account.
+        \item[\nextTask{}\label{req:x}] When a card is deleted, if the user is logged-in, the subject is also deleted from his account.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Register, Log-in, and log-out}
+A user wants to register, log-in, or log-out.
+
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] When the user is logged-in, the user icon in the dashboard changes to his profile picture.
+    \item[\nextTask{}\label{req:x}] When the user is logged-in, and a non blocking spinner is shown while the dashboard's subjects are being synced with the ones in the user's account.
+    \item[\nextTask{}\label{req:x}] When the user is not logged-in, a notification shows up with the log-in action. Clicking the action does the same as clicking the log-in button in the log-in screen.
+    \item[\nextTask{}\label{req:x}] The log-in screen is a popup in desktop and mobile.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] It has the user's profile picture. If the user is not logged in, the picture is a default one. 
+        \item[\nextTask{}\label{req:x}] It has the user's profile name. If the user is not logged in, the name is a default one (Anonymous). 
+        \item[\nextTask{}\label{req:x}] It has a short text listing the benefits of logging-in.
+        \item[\nextTask{}\label{req:x}] It has a log-in or log-out button, green and red respectively, depending on weather the user is logged in or not.
+        \item[\nextTask{}\label{req:x}] The log-in button registers the user, without extra steps, if he is not registered yet.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] The login system uses Google's log-in.
+    \item[\nextTask{}\label{req:x}] When the app is opened, if the user was logged-in, he's logged-in automatically.
+\end{itemize}
+
+\subsection*{Edit subject}
+A user wants to edit a subject
+
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] The screen title can be changed.
+    \item[\nextTask{}\label{req:x}] The action button label can be changed.
+    \item[\nextTask{}\label{req:x}] When the action button is clicked the all inputs are read and a new subject object is crated. This object is returned to the previous screen, delegating the responsibility.
+    \item[\nextTask{}\label{req:x}] It has a grid to edit the evaluation.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] In the grid, each row represents an exam, and each extra column an evaluation.
+        \item[\nextTask{}\label{req:x}] The fixed columns are the following: exam name, exam category and exam grade.
+        \item[\nextTask{}\label{req:x}] There are extra columns, one per each evaluation. The first row of the column is the evaluation name, and each row the weight of the corresponding exam.
+        \item[\nextTask{}\label{req:x}] The weight are in percentage without the \% symbol.
+        \item[\nextTask{}\label{req:x}] If a weight is empty, it's considered 0.
+        \item[\nextTask{}\label{req:x}] Below each evaluation column there's a label indicating the sum of all the weights of the evaluation. This way the users can check quickly that it adds to 100\%.
+        \item[\nextTask{}\label{req:x}] In the grid, rows and columns can be added and removed.
+        \begin{itemize}[leftmargin=2cm]
+            \item[\nextTask{}\label{req:x}] There's a faded extra row at the bottom, and a faded extra column at the left. If the user types something in there, it becomes clear and part of the grid. A new faded row or column is added to let the user repeat the process.
+            \item[\nextTask{}\label{req:x}] If the user deletes all the values of a row or column, it disappears.
+        \end{itemize}
+        \item[\nextTask{}\label{req:x}] The grid can be easily navigable with the keyboard.
+        \item[\nextTask{}\label{req:x}] If the grid is to big to fit the screen, it can be scrolled.
+        \item[\nextTask{}\label{req:x}] If the user clicks the action button and there isn't at least 1 exam a notification appears and the action is ignored.
+        \item[\nextTask{}\label{req:x}] If the user clicks the action button and there isn't at least 1 evaluation a notification appears and the action is ignored.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It has a section with the subject information fields.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] It has a field for: \textit{shortName}, \textit{longName}, \textit{course}, \textit{faculty} and \textit{university}.
+        \item[\nextTask{}\label{req:x}] It has a field \textit{color} where the allowed colors are displayed and the user checks the one he wants. By default a random one is selected.
+        \item[\nextTask{}\label{req:x}] Each field has it's label always visible.
+        \item[\nextTask{}\label{req:x}] When the label is clicked the input is focused.
+        \item[\nextTask{}\label{req:x}] The inputs have their sizes proportionate to the expected content length.
+        \item[\nextTask{}\label{req:x}] The fields \textit{shortName}, \textit{longName}, \textit{course}, \textit{faculty} and \textit{university} can't be empty.
+        \item[\nextTask{}\label{req:x}] The fields have the same style as the exam inputs.
+        \item[\nextTask{}\label{req:x}] The field \textit{color} must have always be chosen.
+        \item[\nextTask{}\label{req:x}] It has the \textit{creationDate} and \textit{creatorName} but they are not editable. They look like a text instead of a disabled input. The \textit{creationDate} is in format \texttt{d/m/yyyy}.
+        \item[\nextTask{}\label{req:x}] When a field is invalid it has a red border.
+        \item[\nextTask{}\label{req:x}] If the user clicks the action button and there are invalid fields a notification with appears with the name of the invalid field in the message and the action is ignored.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It looks like a popup in desktop and like a full page in mobile. It can be scrolled in both styles.
+    \item[\nextTask{}\label{req:x}] If the user clicks the back button of the browser, the popup blurred background or the back arrow in the header bar, the changes are discarded and the app navigates to the last screen.
+\end{itemize}
+
+\subsection*{Search subject}
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] It has a big search input.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] The search input has an example as placeholder.
+        \item[\nextTask{}\label{req:x}] Below the the search input there's a short text explaining what field are searchable.
+        \item[\nextTask{}\label{req:x}] The search input is focused automatically when this screen is opened.
+        \item[\nextTask{}\label{req:x}] When the search input has text, a cross icon appears at the right and when it's clicked it removes the input's content.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] When the user types in the search input, the results appear in the screen.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] When the user types a character, a search is performed automatically and the results displayed and updated instantly as the user writes.
+        \item[\nextTask{}\label{req:x}] If there are no results, a text appears saying that there are no results.
+        \item[\nextTask{}\label{req:x}] When there are results, the create button disappears.
+        \item[\nextTask{}\label{req:x}] The search engine accepts typos.
+        \item[\nextTask{}\label{req:x}] The results are sorted by relevance.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] If there are results they are displayed in a list.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] It contains a checkbox
+        \begin{itemize}[leftmargin=2cm]
+            \item[\nextTask{}\label{req:x}] The checkboxes are disabled by default.
+            \item[\nextTask{}\label{req:x}] When the subject of the result is already added to the dashboard, the checkbox is checked but disabled.
+            \item[\nextTask{}\label{req:x}] Clicking the checkbox checks or unchecks it with an animation.
+            \item[\nextTask{}\label{req:x}] When the search query changes, the checked subjects stay checked although they are not visible. If they appear in another query they'll still be checked.
+        \end{itemize}
+        \item[\nextTask{}\label{req:x}] It contains the \textit{shortName}, \textit{longName}, \textit{course}, \textit{faculty} and \textit{university} attributes as text.
+        \item[\nextTask{}\label{req:x}] The matching characters from the query are highlighted.
+        \item[\nextTask{}\label{req:x}] It contains a edit icon that when clicked opens the edit subject screen of the current subject. With the title ``Edit and add subject'' and the action button ``Add'' that adds the subject directly with the changes. When clicked also checks the result checkbox.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] When the action button is clicked the checked subjects are added to the dashboard.
+    \item[\nextTask{}\label{req:x}] If the user is logged-in, when the action button is clicked the checked subjects are also added to the user's account.
+    \item[\nextTask{}\label{req:x}] When the action button is clicked, while the subjects are being added, a non blocking spinner informs that the subjects are being added in the background.
+    \item[\nextTask{}\label{req:x}] It has a create button.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] There's a short explanatory text of what creating a new subject means.
+        \item[\nextTask{}\label{req:x}] When the create button is clicked it opens the edit subject screen of an empty subject. 
+        \begin{itemize}[leftmargin=2cm]
+            \item[\nextTask{}\label{req:x}] The edit screen has as title ``New subject'' and as action button ``Create'' that creates and adds the subject to the dashboard.
+            \item[\nextTask{}\label{req:x}] If the user is logged-in, the subject is also created in the database. 
+            \item[\nextTask{}\label{req:x}] While the subjects are being added, a blocking spinner informs that the subjects are being created.
+        \end{itemize}
+        \item[\nextTask{}\label{req:x}] The create button doesn't draw a lot of attention. To prevent unnecessary clicks.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] It looks like a popup in desktop and like a full page in mobile. It can be scrolled in both styles.
+    \item[\nextTask{}\label{req:x}] If the user clicks the back button of the browser, the popup blurred background or the back arrow in the header bar, the changes are discarded and the app navigates to the last screen.
+\end{itemize}
+
+\subsection*{Notifications}
+A user wants to be notified of certain things and be able to respond with an action.
+
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] It has a message that can be changed.
+    \item[\nextTask{}\label{req:x}] It has an action name and callback function that can be changed.
+    \item[\nextTask{}\label{req:x}] It appear for 8 seconds by default and can be changed.
+    \item[\nextTask{}\label{req:x}] It has a slide up animation when appears.
+    \item[\nextTask{}\label{req:x}] It has a slow fade out animation to inform the user how much time is remaining until it disappears, instead of disappearing instantly.
+    \item[\nextTask{}\label{req:x}] If it has a action, after disappearing it can still be clicked for 0.5 seconds, although it's not visible. It's a grace second, in case the user clicked it too late.
+    \item[\nextTask{}\label{req:x}] It's placed on top of everything at the bottom center of the screen.
+\end{itemize}
+
+\subsection*{Spinners}
+A user wants to be notified of background processes.
+
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] The non blocking spinners appear at the bottom of the dashboard.
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] They are discrete
+        \item[\nextTask{}\label{req:x}] They have a message.
+    \end{itemize}
+    \item[\nextTask{}\label{req:x}] The blocking spinners, are placed on top of everything (in the z dimension).
+    \begin{itemize}[leftmargin=2cm]
+        \item[\nextTask{}\label{req:x}] They have a message.
+        \item[\nextTask{}\label{req:x}] They have a long and entertaining animation. To make the waiting more pleasant.
+        \item[\nextTask{}\label{req:x}] If they take more than the expected time, a message shows up telling that something went wrong.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{General}
+\begin{itemize}[leftmargin=2cm]
+    \item[\nextTask{}\label{req:x}] The app's UI is entirely in Spanish.
+    \item[\nextTask{}\label{req:x}] The app is a Progressive Web App (PWA).
+    \item[\nextTask{}\label{req:x}] The app is published in a domain.
+    \item[\nextTask{}\label{req:x}] The app is published in the Google Play Store.
+    \item[\nextTask{}\label{req:x}] The app can work offline (exept logging-in, and searching subjects).
+    \item[\nextTask{}\label{req:x}] The subjects are stored in the device's local storage and if logged-in in his account.
+    \item[\nextTask{}\label{req:x}] The app is the first google result when searching "GradeCalc" and "Grade Calc".
+    \item[\nextTask{}\label{req:x}] The main source code is open-source.
+    \item[\nextTask{}\label{req:x}] The user account information can only be accessed by the own user.
+    \item[\nextTask{}\label{req:x}] The subject's in the database can't be edited or deleted by users, but they can create new subjects.
+    \item[\nextTask{}\label{req:x}] The decimal separator is always displayed with a period. When the user types a number can use indistinctly a period or a comma.
+    \item[\nextTask{}\label{req:x}] The site uses Google Analytics.
+    \item[\nextTask{}\label{req:x}] The app's deployment is automated.
+    \item[\nextTask{}\label{req:x}] The app's testing is automated.
+    \item[\nextTask{}\label{req:x}] The app has icons for most of the platforms (favicon, android, iOS...).
+    \item[\nextTask{}\label{req:x}] The app has a privacy and policy page.
+\end{itemize}
+
+% \subsection*{Old}
+% \begin{itemize}[leftmargin=2cm]
+%     \item[\nextTask{}\label{req:x}] Calculate needed grade to pass a course.
+%     \item[\nextTask{}\label{req:x}] User can set custom needed grade, instead of just a 5.
+%     \item[\nextTask{}\label{req:x}] Calculate final grade.
+%     \item[\nextTask{}\label{req:x}] Sign-up with email, Google, GitHub, and Facebook.
+%     \item[\nextTask{}\label{req:x}] Delete account.
+%     \item[\nextTask{}\label{req:x}] Log-in and Log-out.
+%     \item[\nextTask{}\label{req:x}] Save grades in an account (cloud) to share them between desktop and mobile.
+%     \item[\nextTask{}\label{req:x}] Courses: Search, Create, View, Edit and Delete.
+%     \item[\nextTask{}\label{req:x}] Courses can have a custom grade to pass.
+%     \item[\nextTask{}\label{req:x}] Dashboard with course cards where users input their grades.
+%     \item[\nextTask{}\label{req:x}] Achieve finished courses instead of deleting them.
+%     \item[\nextTask{}\label{req:x}] Auto-evaluate calculations on change.
+%     \item[\nextTask{}\label{req:x}] Auto-save changes.
+%     \item[\nextTask{}\label{req:x}] UI designed for mobile and desktop.
+%     \item[\nextTask{}\label{req:x}] Save grades in the device to use the app offline.
+%     \item[\nextTask{}\label{req:x}] Have a lunch icon on the home screen.
+%     \item[\nextTask{}\label{req:x}] Basic features work offline.
+%     \item[\nextTask{}\label{req:x}] It is a Progressive Web App (PWA).
+%     \item[\nextTask{}\label{req:x}] Create special evaluation formulas.
+%     \item[\nextTask{}\label{req:x}] Courses can have multiple evaluation formulas.
+%     \item[\nextTask{}\label{req:x}] Courses can have optional exams.
+%     \item[\nextTask{}\label{req:x}] Be the first search result in search engines, especially Google.
+%     \item[\nextTask{}\label{req:x}] Guided tour to learn to use the app the first time visiting it.
+%     \item[\nextTask{}\label{req:x}] Support some none 1-10 grading systems like A-F, 1-5 and percentages.
+%     \item[\nextTask{}\label{req:x}]  Multi-language (Spanish, English, and Catalan).
+%     \item[\nextTask{}\label{req:x}] Share button.
+%     \item[\nextTask{}\label{req:x}] Publish in Google Play Store.
+%     \item[\nextTask{}\label{req:x}] Some actions can be undone.
+%     \item[\nextTask{}\label{req:x}] UI banner that notifies important messages.
+%     \item[\nextTask{}\label{req:x}] The app is accessible.
+%     \item[\nextTask{}\label{req:x}] Set-up domain and deployment.
+%     \item[\nextTask{}\label{req:x}] Collect metrics to improve the app.
+%     \item[\nextTask{}\label{req:x}] Implement Continuous Integration and Deployment.
+%     \item[\nextTask{}\label{req:x}] Be open source and accept contributions.
+% \end{itemize}

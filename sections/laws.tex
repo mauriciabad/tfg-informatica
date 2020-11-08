@@ -1,0 +1,39 @@
+\clearpage\newpage
+\section{Laws and regulations}
+\label{sec:laws}
+
+% One particular detail that needs to be clarified about the project is the use of personal data.
+
+The most important law that this project needs to follow is the GDPR\footnote{General Data Protection Regulation}\cite{gdpr}. It's the core of Europe's digital privacy legislation. 
+Another similar regulation like the CCPA\footnote{California Consumer Privacy Act} can be considered, but the GradeCalc core users reside in Europe, where it doesn't apply.
+
+To understand the GDPR it's really important to comprehend these two definitions\cite{gdpr-definitions}:
+\begin{quote}
+(1) ‘\textbf{personal data}’ means any information relating to an identified or identifiable natural person (‘data subject’); an identifiable natural person is one who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, an identification number, location data, an online identifier or to one or more factors specific to the physical, physiological, genetic, mental, economic, cultural or social identity of that natural person;
+\end{quote}
+
+\begin{quote}
+(2) ‘\textbf{processing}’ means any operation or set of operations which is performed on personal data or on sets of personal data, whether or not by automated means, such as collection, recording, organisation, structuring, storage, adaptation or alteration, retrieval, consultation, use, disclosure by transmission, dissemination or otherwise making available, alignment or combination, restriction, erasure or destruction;
+\end{quote}
+
+The only information stored in the database that could be considered as personal data by the GRPD\cite{gdpr} are the grades and the subject's creator id and name, explained in section \ref{sec:data-model}. Other information stored such as subject evaluation criteria and general information like name, color, and date is not personal, thus it's not regulated by this law.
+
+In order to be GDPR compliant the app needs to have:
+\begin{itemize}
+    % \item An agreement checkbox (unchecked by default) that the user must check to register.
+    \item A message above the login button that says something similar to "by clicking the Sign in button, I accept the terms and conditions".
+    \item Have a page that explains how the personal data is processed (Privacy Policy).
+    \item Have a page that explains how users can perform their rights, regarding GDPR, like erasure, portability, rectification, access, and restriction of the processing.
+\end{itemize}
+
+GradeCalc doesn't need a cookie banner because although using Google Analytics, the information that it collects is anatomized and basic.
+
+If a user wants to perform any of the GDPR rights he/she just has to send an email to the provided address in the Privacy Policy page, and the administrator (in this case myself) will fulfill the request.
+
+The third parties involved in this project are all GDPR compliant, so they can be used legally without any problem. Firebase is the most important external entity because it's the one processing the personal data, I had to verify that it is GDPR compliant\cite{firebase-gdpr} before using it.
+
+\vspace*{\fill}
+\begin{center}
+    \includegraphics[height=8\fontcharht\font`\X]{media/gdpr.png}
+\end{center}
+\vspace*{\fill}

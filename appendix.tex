@@ -1,0 +1,35 @@
+\appendix
+
+%%%%%%%%%% DON'T DELETE THIS, REVERTS NUMBERING BACK %%%%%%%%%%%%%
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{\vspace *{-10\p@ }{\parindent \z@ 
+\raggedright \normalfont \ifnum \c@secnumdepth >\m@ne \Huge \bfseries 
+\@chapapp \space \thechapter \vskip 10\p@ \fi #1\par \nobreak \vskip 30\p@ }}
+\makeatother
+%%%%%%%%%% DON'T DELETE THIS, REVERTS NUMBERING BACK %%%%%%%%%%%%%
+
+
+\chapter{Satisfaction survey answers}
+\label{apx:survey-table}
+
+\begin{center}
+    \def\arraystretch{0.61}
+    \csvreader[
+        longtable=r|*{20}{c},
+        table head=
+            \toprule
+            \multirow{2}{*}{Id} &
+            \multicolumn{20}{c}{Question} \\
+            &1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19&20\\\midrule\endfirsthead
+            \toprule&1&2&3&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18&19&20\\\midrule\endhead
+            \bottomrule\endfoot,
+        late after line=\\,
+        ]
+    {media/data/survey-clean.csv}{
+  1=\one, 2=\two, 3=\three, 4=\four, 5=\five, 
+  6=\six, 7=\seven, 8=\eight, 9=\nine, 10=\ten, 
+  11=\aone, 12=\atwo, 13=\athree, 14=\afour, 15=\afive, 
+  16=\asix, 17=\aseven, 18=\aeight, 19=\anine, 20=\aten
+}
+{\thecsvrow & \one & \two & \three & \four & \five & \six & \seven & \eight & \nine & \ten & \aone & \atwo & \athree & \afour & \afive & \asix & \aseven & \aeight & \anine & \aten}
+\end{center}

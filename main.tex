@@ -1,0 +1,209 @@
+% Change to 'masters' to produces the masters thesis preliminary pages
+\documentclass[oneside,phd,etd,usenames,dvipsnames]{WSUclass}
+\usepackage[utf8x]{inputenc}
+\usepackage{lmodern,textcomp}
+% \usepackage[USenglish,spanish,catalan]{babel}
+\usepackage[USenglish]{babel}
+\usepackage{csquotes,xpatch}
+\usepackage{import}
+\usepackage{multicol}
+\usepackage{preamble}
+\usepackage[T1]{fontenc} % Remove warning on ascii conversion
+\usepackage{biblatex}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage[bottom]{footmisc}
+\usepackage{tikz}
+\usepackage{framed}
+\usepackage{caption,subcaption}
+\usepackage{enumitem}
+\usepackage{ulem}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage{minted}
+\usepackage[skins]{tcolorbox}
+\usepackage{setspace}
+\usepackage{cleveref}
+\usepackage{hyperref}
+\usepackage{cleveref}
+% \usepackage{keyval}
+% \usepackage{environ}
+\usepackage{pgfplots, pgfplotstable}
+\usepgfplotslibrary{statistics}
+\usepackage{csvsimple}
+
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\graphicspath{{./media/}}
+
+% Custom command for drawing colored dots
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\tikzcircle}[2][black,fill=black]{\tikz[baseline=-0.75ex]\draw[#1,radius=#2] (0,0) circle ;}
+% Example: \tikzcircle{2pt} or \tikzcircle[green, fill=blue]{1.5pt} or \tikzcircle[fill=orange]{3pt}
+
+% Custom command to make TODOs
+\newtcolorbox{titlebox}[2][]{%
+  enhanced,colback=white,colframe=black,coltitle=black,
+  sharp corners,boxrule=0.4pt,
+  fonttitle=\itshape,
+  attach boxed title to top left={yshift=-0.4\baselineskip-0.4pt,xshift=2mm},
+  boxed title style={tile,size=minimal,left=0.5mm,right=0.5mm,
+    colback=white,before upper=\strut},
+  title=#2,#1
+}
+
+% Custom command for using inline icons
+\newcommand{\inlineicon}[1]{\raisebox{-.15\height}{\includegraphics[height=4mm]{media/elements/#1}}}
+
+% Custom command for writing user stories
+\newcounter{userstory}
+\newcommand{\nextUserStory}[1]{\refstepcounter{userstory}\subsection*{US \theuserstory\space - #1}}
+% \newcommand{\nextUserStory}[1]{\refstepcounter{userstory}\bigskip\noindent\textbf{\large U.S. \theuserstory\space - #1}\\\noindent}
+\crefname{userstory}{us}{us}
+\Crefname{userstory}{US}{US}
+
+\newcommand{\usStatement}[3]{\textbf{As a} #1, \textbf{I want to} #2, \textbf{so I can} #3.}
+% \newcommand{\usStatement}[3]{As a \textbf{#1}, I want to \textbf{#2}, so I can \textbf{#3}.}
+
+\crefname{task}{task}{tasks}
+\Crefname{task}{Task}{Tasks}
+\newcounter{task}
+\newcommand{\nextTask}{\refstepcounter{task}(Task \thetask)}
+
+% Custom command for writing tests
+\newcounter{manTest}
+\newcommand{\nextManTest}[1]{\refstepcounter{manTest}\subsection*{E2E  \themanTest\space - #1}}
+\crefname{manTest}{E2E}{E2E}
+\Crefname{manTest}{E2E}{E2E}
+
+\newcounter{autoTest}
+\newcommand{\nextAutoTest}[1]{\refstepcounter{autoTest}\subsection*{UT  \theautoTest\space - #1}}
+\crefname{autoTest}{UT}{UT}
+\Crefname{autoTest}{UT}{UT}
+
+\newcolumntype{m}{X}
+\newcolumntype{s}{>{\hsize=.75\hsize}X}
+
+\NewEnviron{testTable}{
+    % \par\noindent
+    \begin{center}
+    \begin{tabularx}{\textwidth}{rsm}
+        \toprule
+         & \textbf{Action} & \textbf{Result}\\
+        \midrule
+        \BODY
+        \bottomrule
+    \end{tabularx}
+    \end{center}
+}
+
+\NewEnviron{autoTestTable}[1]{
+    % \par\noindent
+    \begin{center}
+    \begin{tabularx}{\textwidth}{rsm}
+        \toprule
+         & \textbf{Action} & \textbf{Assert}\\
+        \midrule
+        \BODY
+        \midrule
+        & \multicolumn{2}{l}{\textbf{Variations}} \\
+        \midrule
+        & \multicolumn{2}{l}{#1} \\
+        \bottomrule
+    \end{tabularx}
+    \end{center}
+}
+
+
+% \crefname{questionPlot}{question}{questions}
+% \Crefname{questionPlot}{Question}{Questions}
+% \newcounter{questionPlot}
+% \newcommand{\nextQuestionPlot}{\refstepcounter{questionPlot}\thequestionPlot. }
+
+
+% \makeatletter
+% \define@key{uskeys}{user}{\def\envuser{#1}}%
+% \makeatother
+
+% \newenviron{us}[1][]{
+%   \setkeys{uskeys}{user=User,#1}
+%   As a #1, %I want #2 so that #3.
+  
+%   \BODY
+% }
+
+% Make chapter numbers into string words 1 -> ONE
+\usepackage{fmtcount}
+\makeatletter
+\renewcommand{\@makechapterhead}[1]{\vspace *{40\p@ }{\parindent \z@ 
+\raggedright \normalfont \ifnum \c@secnumdepth >\m@ne \Huge \bfseries 
+\@chapapp \space \Numberstring{chapter} \vskip 10\p@ \fi #1\par \nobreak \vskip 30\p@ }}
+\makeatother
+
+% Remove 'Chapter N' header
+% \usepackage{titlesec}
+% \titleformat{\chapter}[display]{\Huge\bfseries}{}{0pt}{\thechapter.\ }
+% \titleformat{name=\chapter,numberless}[display]{\Huge\bfseries}{}{0pt}{}
+
+\addbibresource{references.bib}
+
+\begin{document}
+
+\hypersetup{breaklinks=true}
+
+ % Start page counting in roman numerals
+ \frontmatter
+ \pagenumbering{Roman}
+
+ % This command makes the formal preliminary pages.
+ % You can comment it out during the drafting process if you want to save paper.
+ \makepreliminarypages
+
+ \doublespace
+ % Make the table of contents.
+ \tableofcontents
+ \thispagestyle{plain}
+
+% This page is OPTIONAL. To remove, comment out and \dedicationpage in diss.tex
+% \dedicationpage
+% \clearemptydoublepage
+
+ % Start regular page counting at page 1
+ \mainmatter
+
+% OK. Everything is set up. Type your thesis here.
+\input{chapters/intro}
+\input{chapters/management}
+\input{chapters/requirements}
+\input{chapters/design}
+\input{chapters/implementation}
+\input{chapters/testing}
+\input{chapters/devops}
+\input{chapters/post}
+\input{chapters/review}
+
+% Bibliography
+\begingroup
+    \setlength\bibitemsep{10pt}
+    \linespread{1}\selectfont
+    \printbibliography[title=REFERENCES]
+\endgroup
+\addcontentsline{toc}{part}{REFERENCES}
+
+% Make the list of tables
+\mylistoftables
+\thispagestyle{plain}
+ 
+% Make the list of figures
+\mylistoffigures
+\thispagestyle{plain}
+
+% Appendices
+\include{appendix}
+
+\end{document}
